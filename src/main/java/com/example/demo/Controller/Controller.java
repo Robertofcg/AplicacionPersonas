@@ -37,29 +37,28 @@ public class Controller {
     @Transactional
 	@GetMapping("/{idPersona}")
 	public Optional<Persona> getPersonById(@PathVariable("idPersona") Long idPersona){
-		return personaService.getPersonas(idPersona);
+		return personaService.getPersona(idPersona);
 	}
 
     @Transactional	
     @PostMapping("/crear")
 	public ResponseEntity<?> crearPersona(@RequestBody Persona persona) {		
-		personaService.Agregar(persona);
+		personaService.agregarPersona(persona);
 		return ResponseEntity.ok("Persona creada exitosamente");
 	}
 
     @Transactional
     @PutMapping("actualizar/{id}")
 	public ResponseEntity<String> actualizarPersona(@PathVariable Long id, @RequestBody Persona persona) {
-		personaService.Actualizar(id, persona);
+		personaService.actualizarPersona(id, persona);
 		return ResponseEntity.ok("Persona actualizada exitosamente");
 	}
 
     @Transactional
     @DeleteMapping("eliminar/{idPersona}")
     public ResponseEntity<String> delete (@PathVariable("idPersona") Long idPersona){
-		personaService.Eliminar(idPersona);
+		personaService.eliminarPersona(idPersona);
 		return ResponseEntity.ok("Persona eliminada exitosamente");
-
 	}
 
 }
